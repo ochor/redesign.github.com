@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>스와이프 갤러리 따라해보기</title>
+	
+	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+	<!--23.08.02 : CSS 작업 링크-->
+	<link rel="stylesheet" href="./css/style.css">	
+	
+	<script src="https://kit.fontawesome.com/c47106c6a7.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>	
+</head>
+<body>
+<!--HTML 구간-->
+<!--풀 스크린 배경 레이아웃 잡기-->	
+<div class="wrap">
+
+	<!--제목 (좌측상단)-->	
+	<h1>Slider<span>구현</span></h1>
+
+	<!--자동재생, 정지버튼 (좌측하단)-->
+	<ul class ="auto">
+		<li class="btnStart">🎅</li>
+		<li class="btnStop">🧛‍♀️</li>
+	</ul>
+	
+	<!--스와이퍼 덩어리-->
+	<div class="swiper-wrapper">
+
+		<!--스와이퍼 덩어리 중 1개에 대한-->
+		<div class="swiper-slide">
+
+			<!--내부 콘텐츠 덩어리-->
+			<div class="inner">
+				<div class="con">
+					<img src="img/pic1.png">
+					<h2>Dolor ipsum  sit.</h2>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi officiis iste nam quae.</p>
+				</div>
+			</div>
+		</div>
+
+		<!--스와이퍼 덩어리 중 1개에 대한_2-->
+		<div class="swiper-slide">
+
+			<!--내부 콘텐츠 덩어리-->
+			<div class="inner">
+				<div class="con">
+					<img src="img/pic2.png">
+					<h2>Dolor ipsum  sit.</h2>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi officiis iste nam quae.</p>
+				</div>
+			</div>
+		</div>
+
+		<!--스와이퍼 덩어리 중 1개에 대한_3-->
+		<div class="swiper-slide">
+
+			<!--내부 콘텐츠 덩어리-->
+			<div class="inner">
+				<div class="con">
+					<img src="img/pic3.png">
+					<h2>Dolor ipsum  sit.</h2>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi officiis iste nam quae.</p>
+				</div>
+			</div>
+		</div>
+
+		<!--스와이퍼 덩어리 중 1개에 대한_4-->
+		<div class="swiper-slide">
+
+			<!--내부 콘텐츠 덩어리-->
+			<div class="inner">
+				<div class="con">
+					<img src="img/pic4.png">
+					<h2>Dolor ipsum  sit.</h2>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi officiis iste nam quae.</p>
+				</div>
+			</div>
+		</div>
+
+		<!--스와이퍼 덩어리 중 1개에 대한_5-->
+		<div class="swiper-slide">
+
+			<!--내부 콘텐츠 덩어리-->
+			<div class="inner">
+				<div class="con">
+					<img src="img/pic5.png">
+					<h2>Dolor ipsum  sit.</h2>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi officiis iste nam quae.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+			<!-- 좌우버튼 -->
+			<div class="swiper-button-next"></div>
+			<div class="swiper-button-prev"></div>
+			
+			<!-- 페이징 버튼 -->
+			<div class="swiper-pagination"></div>
+</div>
+
+<!--Script 구간-->
+<script>
+	const swiper = new Swiper('.wrap', {
+  		direction: 'horizontal',
+  		loop: true,
+  		pagination: {
+			el: '.swiper-pagination',
+
+			//페이지 버튼 형태에서 슬라이더 번호로 변경
+			type: 'fraction'
+		},
+  		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+  	},
+ 	spaceBetween: 0,
+  	slidesPerView: "auto", //원하는 슬라이드의 갯수
+	grabCursor: true,
+	centeredSlides :true,
+	speed:500,
+	effect:"coverflow",
+	coverflowEffect:{
+		rotate:30,
+		stretch: -100,
+		depth: 400,
+		modifier 1;
+		slideShadows: false;
+	},
+	autoplay: {
+				delay:1000,		
+				disableOnInteraction : true
+			}	
+		});
+
+		// .btnStart 요소를 찾아서 btnStart에 저장
+		const btnStart = document.querySelector(".btnStart");
+		// .btnStop 요소를 찾아서 btnStop에 저장
+		const btnStop = document.querySelector(".btnStop");
+
+		//btnStart버튼을 클릭시 자동롤링 시작
+		btnStart.addEventListener("click",()=>{
+			swiper.autoplay.start();
+		});
+
+		//btnStart버튼을 클릭시 자동롤링 정지
+		btnStop.addEventListener("click",()=>{
+			swiper.autoplay.stop();
+		});
+</script>
+</body>
+</html>

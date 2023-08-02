@@ -1,0 +1,169 @@
+/* 화면 초기화 - 기본 세팅 되어있던 CSS*/
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Nanum+Gothic+Coding&display=swap');
+
+* {margin: 0px; padding: 0px;}
+ul,ol,li {list-style: none;}
+a {text-decoration: none;}
+
+/* 23.08.02 작성 시작 - 1. 뒷배경 풀스크린 그라디언트 화면 */
+.wrap{
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+	position: relative;
+	box-sizing: border-box;
+	background: linear-gradient(45deg, #F37335, #FDC830); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/* 23.08.02 - 2. 제목과 재생, 정지버튼 만들기 */
+.wrap h1{
+	font-size:24pt;
+	font-family: 'Abril Fatface';
+	color: cornflowerblue;
+	letter-spacing: 1px;
+	position: absolute;
+	left: 50px;
+	top: 70px;
+}
+.wrap h1 span{
+	opacity: 0.8;
+}
+
+.wrap .auto{
+	position: absolute;
+	bottom: 60px;
+	left: 60px;
+	z-index: 20;
+}
+.wrap .auto li{
+	float: left;
+	margin-right: 20px;
+	cursor: pointer;
+	color: aliceblue;
+	font-size: 20px;
+	opacity: 0.5;
+	transition:  all 0.5s;
+}
+.wrap .auto li:hover{
+	opacity: 1;
+	transform: scale(1.4);
+}
+
+/* 23.08.02 - 3. 슬라이드 프레임 기본 스타일 */
+.wrap .swiper-wrapper {
+	width: 100%;
+	height: 100%;
+}
+.wrap .swiper-wrapper .swiper-slide {
+	width: 500px;
+	height: 500px;
+	position: relative;
+	top: 50%;  /* 부모 요소 중앙에서 시작 */
+	margin-top: -230px;  /* 마진을 이용해 위치 조정 */
+}
+.wrap .swiper-wrapper .swiper-slide .inner {
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	padding: 30px;
+	box-sizing: border-box; 
+	opacity: 0.4;
+	transition: all 1s;  /* 1초 동안 모든 트랜지션 효과 적용 */
+}
+/* 애니메이션 효과 적용 */
+@keyframes ani {
+	0% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	1% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1.4);
+	}
+}
+/* 활성화된 슬라이드의 애니메이션 효과 설정 */
+.wrap .swiper-wrapper .swiper-slide-active .inner::before {
+	animation: ani 1s ease 1;
+}
+.wrap .swiper-wrapper .swiper-slide-active .inner::after {
+	animation: ani 1s ease 0.3s 1;
+}
+
+/* 23.08.02 - 4. 슬라이드 내부 컨텐츠 스타일 설정 */
+.wrap .swiper-wrapper .swiper-slide .inner .con {
+	position: relative;
+	z-index: 10;  /* z-index로 레이어 순서 지정 */
+}
+.wrap .swiper-wrapper .swiper-slide .inner .con img {
+	width: 100%;  /* 이미지 너비를 100%로 설정 */
+}
+.wrap .swiper-wrapper .swiper-slide .inner .con h2 {
+	font-weight: normal;
+	font-size: 40px;
+	font-family: "roboto";  /* 폰트를 roboto로 설정 */
+	color: #111;
+	margin-top: 15px;  /* 상단 마진 설정 */
+	margin-bottom: 20px;  /* 하단 마진 설정 */
+}
+.wrap .swiper-wrapper .swiper-slide .inner .con h2::after {
+	content: ""; 
+	display: block;
+	width: 30px;  /* 너비 설정 */
+	height: 1px;  /* 높이 설정 */
+	background-color: #888;  /* 배경색 설정 */
+	margin-top: 15px;  /* 상단 마진 설정 */
+	transition: 1s 0.5s;  /* 1초 동안 0.5초 딜레이로 변환 효과 적용 */
+}
+/* 활성화된 슬라이드의 제목 하단 선 너비 변경 */
+.wrap .swiper-wrapper .swiper-slide-active .inner .con h2::after {
+	width: 100px;
+}
+/* 슬라이드 내부 텍스트 스타일 설정 */
+.wrap .swiper-wrapper .swiper-slide .inner .con p {
+	font-weight: normal;
+	font-size: 13px;
+	font-family: "arial";  /* 폰트를 arial로 설정 */
+	line-height: 1.3;  /* 줄 간격 설정 */
+	color: #aaa;  /* 텍스트 색상 설정 */
+	letter-spacing: 1px;  /* 글자 간격 설정 */
+}
+
+/* 23.08.02 - 5. 좌우 버튼 스타일 설정 */
+.wrap .swiper-button-prev {
+	left: auto;
+	right: 100px;  /* 오른쪽에서 100px 위치에 버튼 배치 */
+	top: auto;
+	bottom: 50px;  /* 하단에서 50px 위치에 버튼 배치 */
+	filter: grayscale(100%) brightness(3);  /* 필터 효과로 그레이스케일과 밝기 설정 */
+	transform: scale(0.5);  /* 크기를 0.5배로 축소 */
+}
+.wrap .swiper-button-next {
+	left: auto;
+	right: 60px;  /* 오른쪽에서 60px 위치에 버튼 배치 */
+	top: auto;
+	bottom: 50px;  /* 하단에서 50px 위치에 버튼 배치 */
+	filter: grayscale(100%) brightness(3);  /* 필터 효과로 그레이스케일과 밝기 설정 */
+	transform: scale(0.5);  /* 크기를 0.5배로 축소 */
+}
+
+/* 23.08.02 - 6. 페이지네이션 스타일 설정 (페이징 버튼에 : 카운트되는 디자인속성인 (fraction 기능 추가))*/
+.swiper-pagination-fraction {
+	bottom: auto;
+	top: 50px;  /* 상단에서 50px 위치에 페이지네이션 배치 */
+	left: auto;
+	right: 50px;  /* 오른쪽에서 50px 위치에 페이지네이션 배치 */
+	width: auto;	
+	font-size: 16px;
+	font-family: "Nanum Gothic Coding";  /* 폰트를 Nanum Gothic Coding으로 설정 */
+	letter-spacing: 1px;  /* 글자 간격 설정 */
+	color: #eee;  /* 텍스트 색상 설정 */	
+}
+/* 첫 번째 span 요소의 스타일 설정 */
+.swiper-pagination-fraction span:nth-of-type(1) {
+	font-size: 30px; 
+	color: #fff;  /* 텍스트 색상 설정 */
+}
